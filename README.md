@@ -7,7 +7,7 @@ MSVC 2015: [![Build status](https://ci.appveyor.com/api/projects/status/kujt3sg2
 
 # basic use
 
-´´´cpp
+```CPP
 #include <teelogging/teelogging.h>
 
 ...
