@@ -1,31 +1,32 @@
-#ifndef _LOGGER_H_
-#define _LOGGER_H_
+#ifndef _TEELOGGING_H_
+#define _TEELOGGING_H_
 
 #if defined(_WIN32) || defined(WIN32)
-#ifdef Logger_EXPORTS
-#define LOGGER_API __declspec(dllexport)
+#ifdef teelogging_EXPORTS
+#define TEELOGGING_API __declspec(dllexport)
 #else
-#ifndef Logger_STATIC
-#define LOGGER_API __declspec(dllimport)
+#ifndef teelogging_STATIC
+#define TEELOGGING_API __declspec(dllimport)
 #else
-#define LOGGER_API
+#define TEELOGGING_API
 #endif
 #endif
 #else
-#define LOGGER_API
+#define TEELOGGING_API
 #endif
 
 #include <string>
 #include <stdarg.h>
+#include <memory>
 
-namespace dune {
-	class ILogger;
-	class Logger;
-	class LoggerManager;
-	class LoggerRegistrator;
+namespace tl {
+	class teelogging_interface;
+	class teelogging_impl;
+	class teelogging_manager;
+	class teelogging_registrator;
 }
 
-#include "LoggerManager.h"
+#include "teelogging_manager.h"
 
 #ifdef ANDROID
 	#ifdef _DEBUG
@@ -41,16 +42,16 @@ namespace dune {
 	#define LOGF(...)  ((void)__android_log_print(ANDROID_LOG_FATAL, ROOT_NAME, __VA_ARGS__))
 #else
 	#ifdef _DEBUG
-		#define LOGV(...) dune::LoggerManager::v(__VA_ARGS__)
-		#define LOGD(...) dune::LoggerManager::d(__VA_ARGS__)
+		#define LOGV(...) tl::teelogging_manager::v(__VA_ARGS__)
+		#define LOGD(...) tl::teelogging_manager::d(__VA_ARGS__)
 	#else
 		#define LOGV(...)
 		#define LOGD(...)
 	#endif
-	#define  LOGI(...) dune::LoggerManager::i(__VA_ARGS__)
-	#define  LOGW(...) dune::LoggerManager::w(__VA_ARGS__)
-	#define  LOGE(...) dune::LoggerManager::e(__VA_ARGS__)
-	#define  LOGF(...) dune::LoggerManager::f(__VA_ARGS__)
+	#define  LOGI(...) tl::teelogging_manager::i(__VA_ARGS__)
+	#define  LOGW(...) tl::teelogging_manager::w(__VA_ARGS__)
+	#define  LOGE(...) tl::teelogging_manager::e(__VA_ARGS__)
+	#define  LOGF(...) tl::teelogging_manager::f(__VA_ARGS__)
 #endif
 
 #ifdef ANDROID
@@ -67,17 +68,17 @@ namespace dune {
 	#define LOGF_TAG(tag, ...)  ((void)__android_log_print(ANDROID_LOG_FATAL, tag, __VA_ARGS__))
 #else
 	#ifdef _DEBUG
-		#define LOGV_TAG(tag, ...) dune::LoggerManager::tv(tag, __VA_ARGS__)
-		#define LOGD_TAG(tag, ...) dune::LoggerManager::td(tag, __VA_ARGS__)
+		#define LOGV_TAG(tag, ...) tl::teelogging_manager::tv(tag, __VA_ARGS__)
+		#define LOGD_TAG(tag, ...) tl::teelogging_manager::td(tag, __VA_ARGS__)
 	#else
 		#define LOGV_TAG(tag, ...)
 		#define LOGD_TAG(tag, ...)
 	#endif
-	#define  LOGI_TAG(tag, ...) dune::LoggerManager::ti(tag, __VA_ARGS__)
-	#define  LOGW_TAG(tag, ...) dune::LoggerManager::tw(tag, __VA_ARGS__)
-	#define  LOGE_TAG(tag, ...) dune::LoggerManager::te(tag, __VA_ARGS__)
-	#define  LOGF_TAG(tag, ...) dune::LoggerManager::tf(tag, __VA_ARGS__)
+	#define  LOGI_TAG(tag, ...) tl::teelogging_manager::ti(tag, __VA_ARGS__)
+	#define  LOGW_TAG(tag, ...) tl::teelogging_manager::tw(tag, __VA_ARGS__)
+	#define  LOGE_TAG(tag, ...) tl::teelogging_manager::te(tag, __VA_ARGS__)
+	#define  LOGF_TAG(tag, ...) tl::teelogging_manager::tf(tag, __VA_ARGS__)
 #endif
 
-#endif // _LOGGER_H_
+#endif // _TEELOGGING_H_
 

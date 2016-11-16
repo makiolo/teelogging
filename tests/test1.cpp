@@ -1,12 +1,12 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include <teelogging/Logger.h>
+#include <teelogging/teelogging.h>
 
-using namespace dune;
+using namespace tl;
 using testing::AtLeast;
 using testing::_;
 
-class MockLogger : public ILogger
+class MockLogger : public teelogging_interface
 {
 public:
 	MockLogger() { ; }
@@ -27,21 +27,18 @@ public:
 	MOCK_METHOD2(tf, void(const std::string&, const std::string&));
 };
 
-class LoggerTest : testing::Test
-{
-
-};
-
 #ifdef _DEBUG
 #define TIMES_DEPEND_COMPILE 1
 #else
 #define TIMES_DEPEND_COMPILE 0
 #endif
 
+class LoggerTest : testing::Test { };
+
 TEST(LoggerTest, Test1)
 {
 	MockLogger logger;
-	LoggerManager::registerLogger(logger);
+	teelogging_manager::register(logger);
 
 	EXPECT_CALL(logger, i(_)).Times(1);
 	LOGI("Hello world");
@@ -87,6 +84,6 @@ TEST(LoggerTest, Test1)
 
 	EXPECT_CALL(logger, Die());
 
-	LoggerManager::unregisterLogger(logger);
+	teelogging_manager::unregister(logger);
 }
 

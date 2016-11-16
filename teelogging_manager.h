@@ -1,24 +1,22 @@
-#ifndef _LOGGERMANAGER_H_
-#define _LOGGERMANAGER_H_
+#ifndef _TEELOGGING_MANAGER_H_
+#define _TEELOGGING_MANAGER_H_
 
 #ifndef ROOT_NAME
 #define ROOT_NAME "teelogging"
 #endif
-
-#include <memory>
 
 namespace spdlog
 {
 	class logger;
 }
 
-namespace dune {
+namespace tl {
 
-class LOGGER_API ILogger
+class TEELOGGING_API teelogging_interface
 {
 public:
-	ILogger() {}
-	virtual ~ILogger() {}
+	teelogging_interface() {}
+	virtual ~teelogging_interface() {}
 
 	// verbose
 	virtual void v(const std::string&) = 0;
@@ -57,11 +55,11 @@ public:
 	virtual void tf(const std::string&, const std::string&) = 0;
 };
 
-class LOGGER_API Logger : public ILogger
+class TEELOGGING_API teelogging_impl : public teelogging_interface
 {
 public:
-	Logger();
-	virtual ~Logger();
+	teelogging_impl();
+	virtual ~teelogging_impl();
 
 	// verbose
 	virtual void v(const std::string&) override final;
@@ -105,18 +103,18 @@ protected:
 
 };
 
-class LOGGER_API LoggerManager
+class TEELOGGING_API teelogging_manager
 {
 private:
-	static ILogger* _logger;
+	static teelogging_interface* _logger;
 public:
 
-	static void registerLogger(ILogger& logger)
+	static void register(teelogging_interface& logger)
 	{
 		_logger = &logger;
 	}
 
-	static void unregisterLogger(ILogger& logger)
+	static void unregister(teelogging_interface& logger)
 	{
 		if(&logger == _logger)
 		{
@@ -352,22 +350,22 @@ public:
 	}
 };
 
-class LoggerRegistrator
+class teelogging_registrator
 {
 public:
-	LoggerRegistrator()
+	teelogging_registrator()
 	{
-		LoggerManager::registerLogger(get());
+		teelogging_manager::register(get());
 	}
-	~LoggerRegistrator()
+	~teelogging_registrator()
 	{
-		LoggerManager::unregisterLogger(get());
+		teelogging_manager::unregister(get());
 	}
 
-	dune::Logger& get();
+	tl::teelogging_impl& get();
 };
 
 }
 
-#endif // _LOGGERMANAGER_H_
+#endif // _TEELOGGING_MANAGER_H_
 
