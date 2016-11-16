@@ -24,7 +24,7 @@ teelogging_impl::teelogging_impl()
 	_impl_console = spdlog::stdout_logger_mt("console");
 	_impl_console->set_level(spdlog::level::debug);
 
-	_impl_file = spdlog::rotating_logger_mt("file", "tl", 5 * 1024 * 1024, 10);
+	_impl_file = spdlog::rotating_logger_mt("file", "teelogging", 5 * 1024 * 1024, 10);
 	_impl_file->set_level(spdlog::level::debug);
 }
 
