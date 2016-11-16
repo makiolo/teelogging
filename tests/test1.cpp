@@ -1,6 +1,6 @@
-#include "Logger.h"
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <teelogging/Logger.h>
 
 using namespace dune;
 using testing::AtLeast;
