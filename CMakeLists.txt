@@ -6,5 +6,4 @@ cmaki_setup()
 
 cmaki_find_package(spdlog)
 cmaki2_library(Logger LoggerManager.cpp)
-cmaki2_gtest(Logger tests/test1.cpp DEPENDS Logger)
-
+cmaki2_gtest(Logger tests/test1.cpp DEPENDS Logger PTHREADS)
