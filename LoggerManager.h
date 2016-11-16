@@ -2,10 +2,9 @@
 #define _LOGGERMANAGER_H_
 
 #ifndef ROOT_NAME
-#define ROOT_NAME "dune"
+#define ROOT_NAME "teelogging"
 #endif
 
-#include <format.h>
 #include <memory>
 
 namespace spdlog
