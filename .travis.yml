@@ -53,7 +53,5 @@ install:
   - pip install --user poster
 
 script:
-  - mkdir -p $MODE
-  - cd $MODE
-  - ../cmaki/run.sh
+  - ./cmaki/run.sh
 
