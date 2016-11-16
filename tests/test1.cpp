@@ -38,7 +38,7 @@ class LoggerTest : testing::Test { };
 TEST(LoggerTest, Test1)
 {
 	MockLogger logger;
-	teelogging_manager::register(logger);
+	teelogging_manager::lock(logger);
 
 	EXPECT_CALL(logger, i(_)).Times(1);
 	LOGI("Hello world");
@@ -84,6 +84,6 @@ TEST(LoggerTest, Test1)
 
 	EXPECT_CALL(logger, Die());
 
-	teelogging_manager::unregister(logger);
+	teelogging_manager::unlock(logger);
 }
 

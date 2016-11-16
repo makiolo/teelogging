@@ -109,12 +109,12 @@ private:
 	static teelogging_interface* _logger;
 public:
 
-	static void register(teelogging_interface& logger)
+	static void lock(teelogging_interface& logger)
 	{
 		_logger = &logger;
 	}
 
-	static void unregister(teelogging_interface& logger)
+	static void unlock(teelogging_interface& logger)
 	{
 		if(&logger == _logger)
 		{
@@ -355,11 +355,11 @@ class teelogging_registrator
 public:
 	teelogging_registrator()
 	{
-		teelogging_manager::register(get());
+		teelogging_manager::lock(get());
 	}
 	~teelogging_registrator()
 	{
-		teelogging_manager::unregister(get());
+		teelogging_manager::unlock(get());
 	}
 
 	tl::teelogging_impl& get();
