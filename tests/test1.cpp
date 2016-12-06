@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include <teelogging/teelogging.h>
+#include "../teelogging.h"
 
 using namespace tl;
 using testing::AtLeast;
