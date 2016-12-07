@@ -6,6 +6,6 @@ include("${CMAKE_CURRENT_SOURCE_DIR}/cmaki/cmaki.cmake")
 cmaki_setup()
 
 cmaki_find_package(spdlog)
-cmaki2_library(teelogging teelogging_manager.cpp)
+cmaki2_static_library(teelogging teelogging_manager.cpp)
 
 cmaki2_gtest(teelogging tests/test1.cpp DEPENDS teelogging PTHREADS)
