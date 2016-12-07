@@ -12,5 +12,4 @@
     targets:
         - teelogging:
             info:
-                <<: *library_dynamic_exact
-
+                <<: *library_static_exact
