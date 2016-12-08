@@ -1,4 +1,3 @@
-#include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "../teelogging.h"
 
@@ -38,7 +37,7 @@ class LoggerTest : testing::Test { };
 TEST(LoggerTest, Test1)
 {
 	MockLogger logger;
-	teelogging_manager::lock(logger);
+	teelogging_manager::lock(&logger);
 
 	EXPECT_CALL(logger, i(_)).Times(1);
 	LOGI("Hello world");
@@ -84,6 +83,6 @@ TEST(LoggerTest, Test1)
 
 	EXPECT_CALL(logger, Die());
 
-	teelogging_manager::unlock(logger);
+	teelogging_manager::unlock(&logger);
 }
 

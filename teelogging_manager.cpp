@@ -7,15 +7,15 @@ namespace regLogger
 	tl::teelogging_registrator reg;
 }
 
-tl::teelogging_impl& tl::teelogging_registrator::get()
+tl::teelogging_impl* tl::teelogging_registrator::get()
 {
-	static teelogging_impl log;
-	return log;
+	static tl::teelogging_impl log;
+	return &log;
 }
 
 namespace tl {
 
-teelogging_interface* teelogging_manager::_logger = nullptr;
+// teelogging_impl* _logger = nullptr;
 
 teelogging_impl::teelogging_impl()
 {

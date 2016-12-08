@@ -103,20 +103,19 @@ protected:
 
 };
 
+TEELOGGING_API teelogging_interface* _logger;
+
 class TEELOGGING_API teelogging_manager
 {
-private:
-	static teelogging_interface* _logger;
 public:
-
-	static void lock(teelogging_interface& logger)
+	static void lock(teelogging_interface* logger)
 	{
-		_logger = &logger;
+		_logger = logger;
 	}
 
-	static void unlock(teelogging_interface& logger)
+	static void unlock(teelogging_interface* logger)
 	{
-		if(&logger == _logger)
+		if(logger == _logger)
 		{
 			_logger = nullptr;
 		}
@@ -362,7 +361,7 @@ public:
 		teelogging_manager::unlock(get());
 	}
 
-	tl::teelogging_impl& get();
+	tl::teelogging_impl* get();
 };
 
 }
