@@ -27,3 +27,10 @@
 *.exe
 *.out
 *.app
+
+bin/
+gcc/
+clang/
+depends/
+coverage/
+
