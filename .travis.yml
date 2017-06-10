@@ -71,7 +71,7 @@ script:
   - set +e
 
 notifications:
-  webhooks: http://artifacts.myftp.biz:3000/api/todos
+  webhooks: http://artifacts.myftp.biz:3000/api/webhooks
   on_start: always   # default: never
   on_success: always # default: always
   on_failure: always # default: always
