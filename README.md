@@ -16,6 +16,6 @@ MSVC 2015: [![Build status](https://ci.appveyor.com/api/projects/status/kujt3sg2
 {
   LOGI("info level");
   int n = 10;
-  LOGE("error %d with prontf style", n);
+  LOGE("error %d with printf style", n);
 }
 ´´´
