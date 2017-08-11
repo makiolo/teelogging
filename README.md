@@ -1,4 +1,4 @@
-# teelogging
+# teelogging [![npm version](https://badge.fury.io/js/teelogging.svg)](https://badge.fury.io/js/teelogging)
 logging to file and screen using basic macros LOGI, LOGD, LOGV, LOGW, LOG and LOGF
 
 Coverage: [![codecov](https://codecov.io/gh/makiolo/teelogging/branch/master/graph/badge.svg)](https://codecov.io/gh/makiolo/teelogging)
