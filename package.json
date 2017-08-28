@@ -6,10 +6,13 @@
     "test": "tests"
   },
   "scripts": {
-	"preinstall": "curl -s https://raw.githubusercontent.com/makiolo/cmaki/master/bootstrap.sh | bash",
-	"clean": "node node_modules/cmaki/call.js clean",
-	"install": "node node_modules/cmaki/call.js install",
-	"test": "node node_modules/cmaki/call.js tests"
+    "ci": "cmaki ci",
+    "clean": "cmaki clean",
+    "setup": "cmaki setup",
+    "compile": "cmaki compile",
+    "install": "cmaki install",
+    "test": "cmaki tests",
+    "upload": "cmaki upload"
   },
   "repository": {
     "type": "git",
@@ -27,7 +30,7 @@
   "homepage": "https://github.com/makiolo/teelogging#readme",
   "devDependencies": {},
   "dependencies": {
-    "cmaki": "^1.0.4",
-    "cmaki_generator": "^1.0.0"
+    "cmaki": "makiolo/cmaki",
+    "cmaki_generator": "makiolo/cmaki_generator"
   }
 }
