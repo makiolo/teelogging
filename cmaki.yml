@@ -9,8 +9,12 @@
         - ./*.h include/teelogging
     mode: dr
     source: https://github.com/makiolo/teelogging.git
+    build:
+        |
+            #!/bin/bash
+            source find.script
+            CMAKI_PWD=$(pwd) CMAKI_INSTALL=$SELFHOME/.. npm install
     targets:
         - teelogging:
             info:
                 <<: *library_static_exact
-
