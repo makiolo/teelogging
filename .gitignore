@@ -34,3 +34,5 @@ clang/
 depends/
 coverage/
 
+node_modules/
+
