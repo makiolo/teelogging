@@ -5,7 +5,7 @@
   "directories": {
     "test": "tests"
   },
-  "scripts": {   
+  "scripts": {
     "ci": "curl -s https://raw.githubusercontent.com/makiolo/cmaki_scripts/master/ci.sh | bash",
     "docker": "curl -s https://raw.githubusercontent.com/makiolo/cmaki_scripts/master/docker.sh | bash",
     "clean": "cmaki clean",
@@ -29,10 +29,8 @@
     "url": "https://github.com/makiolo/teelogging/issues"
   },
   "homepage": "https://github.com/makiolo/teelogging#readme",
-  "dependencies": {
-    "cmaki": "git+https://github.com/makiolo/cmaki.git",
-    "cmaki_generator": "git+https://github.com/makiolo/cmaki_generator.git",
-    "cmaki_identifier": "git+https://github.com/makiolo/cmaki_identifier.git",
-    "cmaki_scripts": "git+https://github.com/makiolo/cmaki_scripts.git"
+  "devDependencies": {
+    "npm-mas-mas": "git+https://github.com/makiolo/npm-mas-mas.git"
   }
 }
+
