@@ -2,6 +2,14 @@
 #include "teelogging_manager.h"
 #include <spdlog/spdlog.h>
 
+#if defined(__clang__)
+#define STATIC_MULTITHREAD static
+#elif defined(__GNUC__) || defined(__GNUG__)
+#define STATIC_MULTITHREAD static __thread
+#elif defined(_MSC_VER)
+#define STATIC_MULTITHREAD __declspec(thread) static
+#endif
+
 namespace regLogger
 {
 	tl::teelogging_registrator reg;
@@ -9,7 +17,7 @@ namespace regLogger
 
 tl::teelogging_impl* tl::teelogging_registrator::get()
 {
-	static tl::teelogging_impl log;
+	STATIC_MULTITHREAD tl::teelogging_impl log;
 	return &log;
 }
 
