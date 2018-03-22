@@ -18,6 +18,7 @@
 #include <string>
 #include <stdarg.h>
 #include <memory>
+#include <spdlog/spdlog.h>
 
 namespace tl {
 	class teelogging_interface;

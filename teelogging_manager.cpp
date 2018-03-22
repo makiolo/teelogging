@@ -1,6 +1,5 @@
 #include "teelogging.h"
 #include "teelogging_manager.h"
-#include <spdlog/spdlog.h>
 
 
 
@@ -26,8 +25,6 @@ namespace regLogger
 }
 
 namespace tl {
-
-// teelogging_impl* _logger = nullptr;
 
 teelogging_impl::teelogging_impl()
 {
