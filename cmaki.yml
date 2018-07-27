@@ -5,10 +5,6 @@
     post_install:
         - ./*.h include/teelogging
     source: https://github.com/makiolo/teelogging.git
-    build:
-        |
-            #!/bin/bash
-            CMAKI_INSTALL=$SELFHOME npm install
     targets:
         - teelogging:
             info:
