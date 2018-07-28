@@ -5,12 +5,12 @@
     post_install:
         - ./*.h include/teelogging
     source: https://github.com/makiolo/teelogging.git
-    build:
-        |
-            #!/bin/bash
-            set -e
-            npm install
-            npm test
+    # build:
+    #     |
+    #         #!/bin/bash
+    #         set -e
+    #         npm install
+    #         npm test
     targets:
         - teelogging:
             info:
