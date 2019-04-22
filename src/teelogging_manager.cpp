@@ -1,8 +1,6 @@
 #include "teelogging.h"
 #include "teelogging_manager.h"
 
-
-
 #if defined(__clang__)
 #define STATIC_MULTITHREAD static
 #elif defined(__GNUC__) || defined(__GNUG__)

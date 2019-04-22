@@ -1,5 +1,5 @@
 #include <gmock/gmock.h>
-#include "../teelogging.h"
+#include "teelogging.h"
 
 using namespace tl;
 using testing::AtLeast;
