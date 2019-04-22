@@ -13,9 +13,8 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 # compile 3rd parties
-# conan install . --build missing -s compiler=$COMPILER -s build_type=$MODE -s compiler.libcxx=$COMPILER_LIBCXX -s compiler.version=$COMPILER_VERSION
+conan install . --build missing -s compiler=$COMPILER -s build_type=$MODE -s compiler.libcxx=$COMPILER_LIBCXX -s compiler.version=$COMPILER_VERSION
 
 # compile only $PACKAGE
 conan create . npm-mas-mas/testing -s compiler=$COMPILER -s build_type=$MODE -s compiler.libcxx=$COMPILER_LIBCXX -s compiler.version=$COMPILER_VERSION -tf None
 conan upload '*' -r npm-mas-mas --all -c
-
