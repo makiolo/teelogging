@@ -1,5 +1,7 @@
 #!//bin/bash
 
+set -e
+
 export MODE="${MODE:-Debug}"
 export COMPILER="${COMPILER:-$(conan profile show default | grep -e "\<compiler\>=" | cut -d"=" -f2)}"
 export COMPILER_LIBCXX="${COMPILER_LIBCXX:-$(conan profile show default | grep -e "\<compiler.libcxx\>=" | cut -d"=" -f2)}"
