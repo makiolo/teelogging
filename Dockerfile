@@ -24,7 +24,7 @@ ENV NPP_CI=${NPP_CI}
 
 RUN mkdir -p /tmp
 WORKDIR /tmp
-COPY --chown=1000:1001 requirements.txt /tmp/
+COPY requirements.txt /tmp/
 RUN pip install -r requirements.txt
 
 RUN conan remote add bincrafters "https://api.bintray.com/conan/bincrafters/public-conan"
