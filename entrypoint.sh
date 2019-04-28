@@ -8,7 +8,6 @@ export COMPILER_LIBCXX="${COMPILER_LIBCXX:-$(conan profile show default | grep -
 export COMPILER_VERSION="${COMPILER_VERSION:-$(conan profile show default | grep -e "\<compiler.version\>=" | cut -d"=" -f2)}"
 
 if [ "$NPP_CI" == "FALSE" ]; then
-	# En local, compilar los third-party que faltan, en CI, no los compilamos.
 	conan install . --build missing -s compiler=$COMPILER -s build_type=$MODE -s compiler.libcxx=$COMPILER_LIBCXX -s compiler.version=$COMPILER_VERSION
 fi
 
