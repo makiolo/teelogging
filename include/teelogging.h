@@ -19,6 +19,8 @@
 #include <stdarg.h>
 #include <memory>
 #include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/daily_file_sink.h>
 
 namespace tl {
 	class teelogging_interface;

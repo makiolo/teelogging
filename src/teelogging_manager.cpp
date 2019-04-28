@@ -15,8 +15,6 @@ tl::teelogging_impl* tl::teelogging_registrator::get()
 	return &log;
 }
 
-
-
 namespace regLogger
 {
 	tl::teelogging_registrator reg;
@@ -26,13 +24,13 @@ namespace tl {
 
 teelogging_impl::teelogging_impl()
 {
-	spdlog::set_pattern("[%l] [%H:%M:%S] [thread %t] %v");
+	spdlog::set_pattern("[%H:%M:%S %z] [%n] [%^---%L---%$] [thread %t] %v");
 
-	_impl_console = spdlog::stdout_logger_mt("console");
-	_impl_console->set_level(spdlog::level::debug);
+	_impl_console = spdlog::stdout_color_mt("console"); 
+	_impl_console->set_level(spdlog::level::trace);
 
-	_impl_file = spdlog::rotating_logger_mt("file", "teelogging", 5 * 1024 * 1024, 10);
-	_impl_file->set_level(spdlog::level::debug);
+	_impl_file = spdlog::daily_logger_mt("file", "log.txt", 23, 59);
+	_impl_file->set_level(spdlog::level::trace);
 }
 
 teelogging_impl::~teelogging_impl()

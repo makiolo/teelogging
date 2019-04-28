@@ -1,4 +1,4 @@
-#!//bin/bash
+#!/bin/bash
 
 set -e
 
@@ -7,14 +7,11 @@ export COMPILER="${COMPILER:-$(conan profile show default | grep -e "\<compiler\
 export COMPILER_LIBCXX="${COMPILER_LIBCXX:-$(conan profile show default | grep -e "\<compiler.libcxx\>=" | cut -d"=" -f2)}"
 export COMPILER_VERSION="${COMPILER_VERSION:-$(conan profile show default | grep -e "\<compiler.version\>=" | cut -d"=" -f2)}"
 
-if [ "$(uname)" == "Darwin" ]; then
-	# mac
-	export COMPILER=apple-clang COMPILER_VERSION=10.0 COMPILER_LIBCXX=libc++
+if [ "$NPP_CI" == "FALSE" ]; then
+	# En local, compilar los third-party que faltan, en CI, no los compilamos.
+	conan install . --build missing -s compiler=$COMPILER -s build_type=$MODE -s compiler.libcxx=$COMPILER_LIBCXX -s compiler.version=$COMPILER_VERSION
 fi
 
-# compile 3rd parties
-conan install . --build missing -s compiler=$COMPILER -s build_type=$MODE -s compiler.libcxx=$COMPILER_LIBCXX -s compiler.version=$COMPILER_VERSION
-
-# compile only $PACKAGE
 conan create . npm-mas-mas/testing -s compiler=$COMPILER -s build_type=$MODE -s compiler.libcxx=$COMPILER_LIBCXX -s compiler.version=$COMPILER_VERSION -tf None
 conan upload '*' -r npm-mas-mas --all -c
+
