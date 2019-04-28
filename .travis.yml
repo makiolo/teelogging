@@ -2,5 +2,4 @@ language: c
 services: docker
 os: linux
 script:
-  - docker-compose up --build && docker-compose down
-
+  - docker-compose up --build
