@@ -3,7 +3,7 @@ from conans import ConanFile, tools
 
 class NpmMasMas(ConanFile):
     name = "teelogging"
-    version = "1.0.1"
+    version = "1.0.2"
     license = "Attribution 4.0 International"
     url = "https://github.com/makiolo/teelogging"
     description = "This fast event system allows calls between two interfaces decoupled (sync or async)"
