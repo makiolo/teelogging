@@ -28,6 +28,7 @@ COPY requirements.txt /tmp/
 RUN pip install -r requirements.txt
 
 RUN conan remote add bincrafters "https://api.bintray.com/conan/bincrafters/public-conan"
+RUN conan remote add conan "https://api.bintray.com/conan/conan/conan-center"
 # RUN conan remote add npm-mas-mas "https://api.bintray.com/conan/npm-mas-mas/testing"
 # RUN conan user -p $CONAN_TOKEN -r npm-mas-mas makiolo
 

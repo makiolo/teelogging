@@ -13,9 +13,9 @@ class NpmMasMas(ConanFile):
     generators = "cmake"
 
     def requirements(self):
-        self.requires('gtest/1.8.1@bincrafters/stable')
         self.requires('fmt/5.3.0@bincrafters/stable')
         self.requires('spdlog/1.3.1@bincrafters/stable')
+        self.requires('catch2/2.11.1')
 
     def source(self):
         self.run("git clone {}".format(self.url))
